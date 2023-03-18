@@ -5,8 +5,8 @@ import { getPostList } from "@/utils/post";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SuDev Blog | Home",
-  description: "Free & open-source text similarity API",
+  title: "SuDev Blog | Kiến thức lập trình chuyên sâu",
+  description: "Blog về các kỹ thuật lập trình, blockchain, marketing được cập nhật liên tục bởi SuDev Blog",
 };
 
 export default async function Home() {

@@ -5,11 +5,22 @@ import { getPost } from "@/utils/post";
 import readingTime from "reading-time";
 import { notFound } from "next/navigation";
 import Markdown from "markdown-to-jsx";
+import { Metadata } from "next";
 
 interface IBlogDetailPageProps {
   params: {
     slug: string;
   };
+}
+
+export async function generateMetadata({ params }: IBlogDetailPageProps): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPost(slug);
+  if (!post) notFound();
+  return { 
+    title: post.title,
+    description: post.description,
+   }
 }
 
 export default async function BlogDetailPage({ params }: IBlogDetailPageProps) {
