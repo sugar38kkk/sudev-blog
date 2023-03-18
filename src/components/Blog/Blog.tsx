@@ -11,7 +11,7 @@ interface IBlogProps {
 }
 
 const Blog: FC<IBlogProps> = ({ blog }) => {
-  const stats = readingTime(blog.html);
+  const stats = readingTime(blog.html as string);
   return (
     <article className="relative group">
       <div className="absolute -inset-y-2.5 -inset-x-4 group-hover:bg-slate-100 dark:group-hover:bg-slate-800/50 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
