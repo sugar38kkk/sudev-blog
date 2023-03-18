@@ -16,6 +16,7 @@ export async function getBlogs(): Promise<BlogPost[]> {
   })
   let res = await response.json()
   const discussions = res?.data?.repository?.discussions?.nodes || []
+  // hehe
   const posts = discussions.map((discussion: any): BlogPost => {
     const {
       title,
