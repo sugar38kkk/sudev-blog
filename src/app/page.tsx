@@ -3,6 +3,7 @@ import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
 import { getPostList } from "@/utils/post";
 import type { Metadata } from "next";
+import Logo from './favicon.ico'
 
 export const metadata: Metadata = {
   title: "SuDev Blog | Kiến thức lập trình chuyên sâu",
