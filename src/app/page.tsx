@@ -1,5 +1,3 @@
-"use client"
-
 import ListBlog from "@/components/ListBlog";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
@@ -12,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const data = await getBlogs();
+  
   
   return (
     <div className="relative flex items-center justify-center overflow-hidden">
@@ -22,7 +20,7 @@ export default async function Home() {
           <Paragraph>
             Không có gì ngoài các bài viết chất lượng, chuyên sâu.
           </Paragraph>
-          <ListBlog blogs={data} />
+          <ListBlog />
         </div>
       </div>
     </div>
