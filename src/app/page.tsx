@@ -1,3 +1,5 @@
+"use client"
+
 import ListBlog from "@/components/ListBlog";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
