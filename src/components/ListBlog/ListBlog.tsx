@@ -1,13 +1,12 @@
 import { FC } from "react";
 import Blog from "@/components/Blog";
 import { BlogPost } from "@/types/blog";
-import { getBlogs } from "@/server/blog";
 
 interface IListBlogProps {
+  blogs: BlogPost[]
 }
 
-export default async function ListBlog(){
-  const blogs = await getBlogs();
+const ListBlog: FC<IListBlogProps> = ({blogs}) => {
   return (
     <div className="w-full max-w-2xl space-y-16">
       {
@@ -17,3 +16,4 @@ export default async function ListBlog(){
   );
 };
 
+export default ListBlog;

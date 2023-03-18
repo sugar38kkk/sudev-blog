@@ -1,6 +1,7 @@
 import ListBlog from "@/components/ListBlog";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
+import { getBlogs } from "@/server/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,18 +10,17 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  
+  const data = await getBlogs();
   
   return (
     <div className="relative flex items-center justify-center overflow-hidden">
-      <div className="container mx-auto mt-28 max-w-7xl">
+      <div className="container mx-auto mt-24 max-w-7xl">
         <div className="flex flex-col items-center gap-6">
           <LargeHeading>SuDev Blog</LargeHeading>
           <Paragraph>
             Không có gì ngoài các bài viết chất lượng, chuyên sâu.
           </Paragraph>
-          {/* @ts-expect-error Server Component*/}
-          <ListBlog />
+          <ListBlog blogs={data} />
         </div>
       </div>
     </div>

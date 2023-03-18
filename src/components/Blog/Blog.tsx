@@ -3,18 +3,15 @@ import { FC } from "react";
 import { buttonVariants } from "../ui/Button";
 import Paragraph from "../ui/Paragraph";
 import { BlogPost } from "@/types/blog";
+import { primaryFormatDate } from "@/utils/formatDate";
+import readingTime from "reading-time";
 
 interface IBlogProps {
   blog: BlogPost;
 }
 
 const Blog: FC<IBlogProps> = ({ blog }) => {
-  const createdDate: Date = new Date(blog.createdAt)
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  }
+  const stats = readingTime(blog.html);
   return (
     <article className="relative group">
       <div className="absolute -inset-y-2.5 -inset-x-4 group-hover:bg-slate-100 dark:group-hover:bg-slate-800/50 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
@@ -32,7 +29,7 @@ const Blog: FC<IBlogProps> = ({ blog }) => {
         <dl className="">
           <dd className="text-sm leading-6 whitespace-nowrap dark:text-slate-400">
             <time dateTime="2022-09-09T16:24:00.000Z">
-              {createdDate.toLocaleDateString('en-US', options)} . 7 phút đọc
+              {primaryFormatDate(blog.createdAt)} . {Math.ceil(stats.minutes)} phút đọc
             </time>
           </dd>
         </dl>
