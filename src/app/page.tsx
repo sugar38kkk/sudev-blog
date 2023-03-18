@@ -1,7 +1,6 @@
 import ListBlog from "@/components/ListBlog";
 import LargeHeading from "@/components/ui/LargeHeading";
 import Paragraph from "@/components/ui/Paragraph";
-import { getBlogs } from "@/server/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,6 +19,7 @@ export default async function Home() {
           <Paragraph>
             Không có gì ngoài các bài viết chất lượng, chuyên sâu.
           </Paragraph>
+          {/* @ts-expect-error Server Component*/}
           <ListBlog />
         </div>
       </div>
