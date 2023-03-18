@@ -5,13 +5,14 @@ import Paragraph from "../ui/Paragraph";
 import { BlogPost } from "@/types/blog";
 import { primaryFormatDate } from "@/utils/formatDate";
 import readingTime from "reading-time";
+import { Post } from "@/interfaces/post";
 
 interface IBlogProps {
-  blog: BlogPost;
+  blog: Post;
 }
 
 const Blog: FC<IBlogProps> = ({ blog }) => {
-  const stats = readingTime(blog.html as string);
+  const stats = readingTime(blog.mdContent as string);
   return (
     <article className="relative group">
       <div className="absolute -inset-y-2.5 -inset-x-4 group-hover:bg-slate-100 dark:group-hover:bg-slate-800/50 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
@@ -21,28 +22,25 @@ const Blog: FC<IBlogProps> = ({ blog }) => {
         </Paragraph>
         <div className="z-10 mt-2 mb-4 ">
           <Paragraph className="text-left line-clamp-2" size={"sm"}>
-            {
-              blog.bodyText
-            }
+            {blog.description}
           </Paragraph>
         </div>
         <dl className="">
           <dd className="text-sm leading-6 whitespace-nowrap dark:text-slate-400">
             <time dateTime="2022-09-09T16:24:00.000Z">
-              {primaryFormatDate(blog.createdAt)} . {Math.ceil(stats.minutes)} phút đọc
+              {primaryFormatDate(blog.publishedDate)} .{" "}
+              {Math.ceil(stats.minutes)} phút đọc
             </time>
           </dd>
         </dl>
       </div>
       <Link
-        href={`/${blog.id}`}
+        href={`/${blog.slug}`}
         className={`${buttonVariants({
           variant: "link",
         })} pl-0`}
       >
-        <span className="relative ">
-          Đọc thêm
-        </span>
+        <span className="relative ">Đọc thêm</span>
         <svg
           className="relative mt-px ml-2.5 overflow-visible "
           width={3}
