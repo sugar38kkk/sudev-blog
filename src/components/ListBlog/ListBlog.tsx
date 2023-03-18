@@ -1,4 +1,3 @@
-"use client"
 import { FC } from "react";
 import Blog from "@/components/Blog";
 import { BlogPost } from "@/types/blog";
